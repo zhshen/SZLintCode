@@ -12,13 +12,13 @@ Can I use bit operation?
 + Sure you can.
 
 ## Example
-Example 1:
+### Example 1:
 <pre>
 Input:  a = 1, b = 2
 Output: 3	
 Explanation: return the result of a + b.
 </pre>
-Example 2:
+### Example 2:
 <pre>
 Input:  a = -1, b = 1
 Output: 0	
