@@ -1,13 +1,8 @@
 import java.util.List;
+
 /**
- * Definition of Interval:
- * public classs Interval {
- *     int start, end;
- *     Interval(int start, int end) {
- *         this.start = start;
- *         this.end = end;
- *     }
- * }
+ * Definition of Interval: public classs Interval { int start, end; Interval(int
+ * start, int end) { this.start = start; this.end = end; } }
  */
 
 public class Solution {
@@ -23,22 +18,24 @@ public class Solution {
 
         list.sort((val1, val2) -> val1.start - val2.start);
 
-        Interval last = list.get(0);
-        int i = 1;
+        int lastIndex = 0;
+        int currentIndex = 1;
 
-        while(i < list.size()) {
-            Interval val = list.get(i);
+        Interval last = list.get(lastIndex);
+
+        while (currentIndex < list.size()) {
+            Interval val = list.get(currentIndex++);
+
             if (compare(last, val) == 0) {
                 last.end = Math.max(last.end, val.end);
-                list.remove(i);
-            }
-            else {
-                last = val;
-                i++;
+            } else {
+                last = list.get(++lastIndex);
+                last.start = val.start;
+                last.end = val.end;
             }
         }
 
-        return list;
+        return list.subList(0, lastIndex + 1);
     }
 
     private static int compare(Interval i1, Interval i2) {
